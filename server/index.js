@@ -36,7 +36,7 @@ app.get('/' , (req, res) => {
 app.post('/create' , (req,res) => {
     const pool = openDb();
 
-    pool.query('inesrt into task (description) values ($1) returning *' , 
+    pool.query('insert into task (description) values ($1) returning *' , 
         [req.body.description] ,
         (error , result) => {
             if (error) {
