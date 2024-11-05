@@ -47,7 +47,7 @@ function App() {
   const deleteTask = (id) => {
     axios.delete(url + '/delete/' + id)
     .then(response => {
-      const WithoutRemoved = tasks.filter ((item) => item.id !== id);
+      const WithoutRemoved = tasks.filter((item) => item.id !== id);
       setTasks(WithoutRemoved);
 
     }).catch(error => {
