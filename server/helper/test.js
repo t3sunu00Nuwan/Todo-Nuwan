@@ -1,8 +1,14 @@
 import fs from 'fs';
 import path from 'path';
 import { pool } from './db.js';
-//import crypto from 'crypto'; 
-import { hash } from 'crypto';
+import { hash } from 'bcrypt';
+import jwt from 'jsonwebtoken';
+import dotenv from 'dotenv';
+dotenv.config();
+const { sign } = jwt;
+
+ 
+
 
 const _dirname = import.meta.dirname;
 
@@ -10,7 +16,7 @@ const _dirname = import.meta.dirname;
 // for check the db.sql file content
 const initializeTestDb = () => {
     const sql= fs.readFileSync(path.resolve(_dirname, "../todo.sql"), "utf8");
-    pool.querry(sql)
+    pool.query
 }
 
 
@@ -26,6 +32,7 @@ const insertTestUser = (email, password) => {
 
 //for testing token
 const getToken = (email) => {
+    //console.log(process.env.JWT_SECRET_KEY);
     return sign({user:email}, process.env.JWT_SECRET_KEY)
 }
 

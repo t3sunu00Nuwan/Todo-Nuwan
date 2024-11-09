@@ -23,7 +23,9 @@ router.get('/' , getTasks);
 
 });*/
 
-router.post('/create' , auth,(req,res) => {
+router.post('/create' , auth, postTask);
+    
+    /*(req,res) => {
     
 
     pool.query('insert into task (description) values ($1) returning *' , 
@@ -36,7 +38,7 @@ router.post('/create' , auth,(req,res) => {
             return res.status(200).json({id: result.rows[0].id})
         }
     )
-});
+});*/
 
 
 
