@@ -1,12 +1,15 @@
 import {pool} from '../helper/db.js';
 import { Router } from 'express';  
-import { emptyOrRows } from '../helper/utils.js';    
+//import { emptyOrRows } from '../helper/utils.js';    
 import {auth} from '../helper/auth.js';
+import {getTasks, postTask} from '../controllers/TaskController.js';
 
 const router = Router();
 
 
-router.get('/' , (req, res) => {
+router.get('/' , getTasks);
+    
+    /*(req, res) => {
     
 
     pool.query('select * from task' , (error , result) => {
@@ -18,7 +21,7 @@ router.get('/' , (req, res) => {
         return res.status(200).json(emptyOrRows(result))
     });
 
-});
+});*/
 
 router.post('/create' , auth,(req,res) => {
     
