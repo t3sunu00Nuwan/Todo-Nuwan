@@ -1,19 +1,18 @@
-import {pool} from '../helper/db.js';
-import { Router } from 'express';  
-//import { emptyOrRows } from '../helper/utils.js';    
-import {auth} from '../helper/auth.js';
-import {getTasks, postTask} from '../controllers/TaskController.js';
+import { pool } from '../helper/db.js';
+import { Router } from 'express';
+import { auth } from '../helper/auth.js';
+import { getTasks, postTask } from '../controllers/TaskController.js';
 
 const router = Router();
 
+// Get all tasks
+router.get('/', getTasks);
 
-router.get('/' , getTasks);
+// Post a new task
+router.post('/create', postTask);
 
-router.post('/create' , auth, postTask);
-
-
-
-router.delete('/delete/:id' , auth,(req,res) => {
+// Delete a task by ID
+router.delete('/delete/:id', (req, res) => {
     
     const id = parseInt(req.params.id);
 
@@ -28,5 +27,6 @@ router.delete('/delete/:id' , auth,(req,res) => {
         }
     )
 });
+
 
 export default router;
