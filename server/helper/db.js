@@ -14,8 +14,8 @@ const openDb = () => {
 
         user: process.env.DB_USER || 'postgres',
         host: process.env.DB_HOST || 'localhost',
-        //database: process.env.DB_NAME,
-        database: process.env.NODE_ENV === 'test' ? process.env.DB_NAME_TEST : process.env.DB_NAME || 'todo',
+        //database: process.env.TEST_DB_NAME,
+        database: process.env.NODE_ENV === 'test' ? process.env.TEST_DB_NAME : process.env.DB_NAME || 'todo',
         password: process.env.DB_PASSWORD,
         port: process.env.DB_PORT || 5432,
     });

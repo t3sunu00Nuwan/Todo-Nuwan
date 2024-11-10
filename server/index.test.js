@@ -127,7 +127,7 @@ describe('DELETE Task', () => {
 
 
 describe('POST register', () => {
-    const email = 'newloging@foo.com';
+    const email = 'loging2@foo.com';
     const password = 'logingfoo123';
     it ('should register with valid email and password', async() => {
         const response = await fetch (baseUrl+ '/user/register' , {
@@ -148,8 +148,8 @@ describe('POST register', () => {
 });
 
 describe('POST login', () => {
-    const email = 'login@foo.com';
-    const password = 'logingfoo123';
+    const email = 'post@foo.com'
+    const password = 'post123'
     insertTestUser(email, password);
     it ('should login with valid email and password', async() => {
         const response = await fetch (baseUrl+ '/user/login' , {
