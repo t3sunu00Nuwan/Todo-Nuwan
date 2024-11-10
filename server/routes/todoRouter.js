@@ -8,37 +8,8 @@ const router = Router();
 
 
 router.get('/' , getTasks);
-    
-    /*(req, res) => {
-    
-
-    pool.query('select * from task' , (error , result) => {
-
-        if (error) {
-            return next(error)
-        }
-
-        return res.status(200).json(emptyOrRows(result))
-    });
-
-});*/
 
 router.post('/create' , auth, postTask);
-    
-    /*(req,res) => {
-    
-
-    pool.query('insert into task (description) values ($1) returning *' , 
-        [req.body.description] ,
-        (error , result) => {
-            if (error) {
-                return res.status(500).json({error: error.message})
-            }
-
-            return res.status(200).json({id: result.rows[0].id})
-        }
-    )
-});*/
 
 
 

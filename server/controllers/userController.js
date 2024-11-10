@@ -1,5 +1,9 @@
-import {hash} from 'bcrypt';
-import { insertUser} from '../models/User.js';  
+import bcrypt from 'bcrypt';
+//const bcrypt = require('bcrypt');
+import { hash, compare } from 'bcrypt';
+import jwt from 'jsonwebtoken';
+const { sign} = jwt;
+import { insertUser, selectUserByEmail } from '../models/User.js';  
 import { ApiError } from '../helper/ApiError.js';
 
 const postRegistration = async (req, res, next) => {
@@ -19,7 +23,7 @@ const createUserObject = (id, email, token=undefined) => {
     return {
         'id': id,
         'email': email, 
-        ...(token!==undefined) && {'token': token};
+        ...(token!==undefined) && {'token': token}
     }
 }
 
